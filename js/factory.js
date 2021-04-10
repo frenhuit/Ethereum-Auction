@@ -1,10 +1,12 @@
 import web3 from "./web3";
+const NETWORK_ID_RINKEBY = "4";
+const NETWORK_ID_LOCAL = "5777";
+
 const contract = require("truffle-contract");
 const auctionFactoryJson = require("../build/contracts/AuctionFactory.json");
 
 const auctionFactoryContract = contract(auctionFactoryJson);
-var address_key = Object.keys(auctionFactoryJson["networks"])[0];
-var factory_address = auctionFactoryJson["networks"][address_key]["address"];
+var factory_address = auctionFactoryJson["networks"][NETWORK_ID_RINKEBY]["address"];
 var factoryInstanceFuture;
 
 auctionFactoryContract.setProvider(web3.currentProvider);

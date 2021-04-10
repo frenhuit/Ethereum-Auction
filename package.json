@@ -18,7 +18,7 @@
     "chai-as-promised": "latest",
     "chai-bignumber": "latest",
     "lite-server": "^2.6.1",
-    "next": "latest",
+    "next": "^10.0.7",
     "nodemon": "latest",
     "react": "^17.0.1",
     "react-dom": "latest",
@@ -28,6 +28,8 @@
     "truffle-contract": "latest"
   },
   "dependencies": {
+    "@metamask/detect-provider": "^1.2.0",
+    "@truffle/hdwallet-provider": "^1.2.2",
     "body-parser": "^1.19.0",
     "cookie-cutter": "^0.2.0",
     "cookies": "^0.8.0",

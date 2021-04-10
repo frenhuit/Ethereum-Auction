@@ -18,7 +18,9 @@
  *
  */
 
-// const HDWalletProvider = require('@truffle/hdwallet-provider');
+const HDWalletProvider = require('@truffle/hdwallet-provider');
+const seed_phrase = 'sauce grocery cancel wife fantasy bounce auto rent ceiling script banner maximum';
+const infura_rinkeby_link = 'wss://rinkeby.infura.io/ws/v3/7042076252e84486934d1028f3a6b4d8';
 // const infuraKey = "fj4jll3k.....";
 //
 // const fs = require('fs');
@@ -43,18 +45,26 @@ module.exports = {
     // options below to some value.
     //
     development: {
-     host: "127.0.0.1",     // Localhost (default: none)
-     port: 7545,            // Standard Ethereum port (default: none)
-     network_id: "*",       // Any network (default: none)
+      host: "10.0.0.234",     // Localhost (default: none)
+      port: 7545,            // Standard Ethereum port (default: none)
+      network_id: "*",       // Any network (default: none)
     },
     // Another network with more advanced options...
     advanced: {
-    // port: 8777,             // Custom port
-    // network_id: 1342,       // Custom network
-    // gas: 8500000,           // Gas sent with each transaction (default: ~6700000)
-    // gasPrice: 20000000000,  // 20 gwei (in wei) (default: 100 gwei)
-    // from: <address>,        // Account to send txs from (default: accounts[0])
+      // port: 8777,             // Custom port
+      // network_id: 1342,       // Custom network
+      // gas: 8500000,           // Gas sent with each transaction (default: ~6700000)
+      // gasPrice: 20000000000,  // 20 gwei (in wei) (default: 100 gwei)
+      // from: <address>,        // Account to send txs from (default: accounts[0])
       websockets: true        // Enable EventEmitter interface for web3 (default: false)
+    },
+    rinkeby: {
+      provider: () => new HDWalletProvider(seed_phrase, infura_rinkeby_link),
+      network_id: 4,
+      gas: 5500000,
+      confirmations: 2,
+      timeoutBlocks: 20000000000000,
+      skipDryRun: true,
     },
     // Useful for deploying to a public network.
     // NB: It's important to wrap the provider as a function.

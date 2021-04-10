@@ -11,6 +11,20 @@ class AuctionIndex extends Component {
     return { auctionSummaries };
   }
 
+  enableEthereum() {
+    ethereum
+      .request({ method: 'eth_requestAccounts' })
+      .catch((err) => {
+        if (err.code === 4001) {
+          // EIP-1193 userRejectedRequest error
+          // If this happens, the user rejected the connection request.
+          console.log('Please connect to MetaMask.');
+        } else {
+          console.error(err);
+        }
+      });
+  }
+
   renderAuctions() {
     const items = this.props.auctionSummaries.map((summary) => {
       return {
@@ -42,12 +56,16 @@ class AuctionIndex extends Component {
                   floated="right"
                   content="Create Auction"
                   icon="add circle"
+                  onClick={this.createAuction}
                   primary
                 />
               </a>
             </Link>
           </div>
           {this.renderAuctions()}
+          {/* <Button onClick={this.enableEthereum}>
+            Enable Ethereum
+          </Button> */}
         </div>
       </Layout>
     );
